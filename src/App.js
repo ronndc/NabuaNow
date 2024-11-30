@@ -15,7 +15,7 @@ const App = () => {
       <nav style={styles.nav}>
         <ul style={styles.menu}>
           <li style={styles.menuItem} onClick={() => scrollToSection("home")}>
-            Home
+            HomePage
           </li>
           <li style={styles.menuItem} onClick={() => scrollToSection("weather")}>
             Weather
