@@ -2,6 +2,10 @@ import React from "react";
 import Navbar from "./Components/Navigation";
 import Section from "./Components/Sections";
 import styles from "./Styles/Styles";
+import { useState, useEffect } from "react";
+import ReactWeather, { useWeatherBit } from 'react-open-weather';
+
+const apikey = process.env.API_KEY;
 
 const App = () => {
   const scrollToSection = (id) => {
@@ -11,9 +15,29 @@ const App = () => {
     }
   };
 
+  const { data, isLoading, errorMessage } = useWeatherBit({
+    key: apikey,
+    lat: '14.5995',
+    lon: '121.9842',
+    lang: 'en',
+    unit: 'M', // values are (M,S,I)
+  });
+
+
   return (
     <div>
+      <br></br>
+      <br></br>
       <Navbar scrollToSection={scrollToSection} />
+      <ReactWeather
+      isLoading={isLoading}
+      errorMessage={errorMessage}
+      data={data}
+      lang="en"
+      locationLabel="Nabua"
+      unitsLabels={{ temperature: 'C', windSpeed: 'Km/h' }}
+      showForecast
+      />
       <Section id="home" title="Home" content="Welcome to the Home section." style={{ ...styles.section, backgroundColor: "#f4f4f4" }} />
       <Section id="weather" title="Weather" content="This is the Weather section." style={{ ...styles.section, backgroundColor: "#e3f2fd" }} />
       <Section id="traffic" title="Traffic" content="Here is the Traffic section." style={{ ...styles.section, backgroundColor: "#e8f5e9" }} />
