@@ -3,7 +3,7 @@ const styles = {
   fontFamily: "'Poppins', sans-serif",
   
   nav: {
-    position: "fixed",
+    position: "sticky",
     top: 0,
     width: "100%",
     backgroundColor: "#ffffff", // White background

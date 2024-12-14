@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import axios from "axios";
 import Navbar from "./Components/Navigation";
 import Section from "./Components/Sections";
@@ -37,16 +38,15 @@ const App = () => {
     }
   };
   return (
-    <div className="main-cont">
+    <div>
       <Navbar scrollToSection={scrollToSection} setLocation={setLocation} />
       {/* Section 1: Hero Banner with Live Alerts */}
       <Section
-        id="hero-banner"
+        id="home"
         title="Live Alerts"
         style={{
           ...styles.section,
-          backgroundColor: "grey", // Red for urgent alerts
-          padding: "20px",
+          backgroundColor: "white", // Red for urgent alertsW
           borderRadius: "8px",
         }}
         content={
@@ -91,9 +91,9 @@ const App = () => {
 
       {/* Section 2: Real-Time Weather Updates */}
       <Section
-        id="weather-updates"
+        id="weather"
         title="Real-Time Weather Updates"
-        style={{ ...styles.section, backgroundColor: "#e3f2fd", padding: "20px", borderRadius: "8px" }}
+        style={{ ...styles.section, backgroundColor: "#e3f2fd", borderRadius: "8px" }}
         content={
           <>
             <h3>Current Weather Conditions</h3>
@@ -162,7 +162,7 @@ const App = () => {
 
       {/* Section 4: Flood Alerts & Emergency Updates */}
       <Section
-        id="flood-alerts"
+        id="alerts"
         title="Flood Alerts & Emergency Updates"
         style={{ ...styles.section, backgroundColor: "#fbe9e7" }}
         content={
