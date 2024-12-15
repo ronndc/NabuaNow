@@ -16,10 +16,9 @@ const Navbar = ({ scrollToSection, setLocation }) => {
   const menuItems = [
     { label: "Home", section: "home" },
     { label: "Weather", section: "weather" },
-    { label: "Traffic", section: "traffic" },
-    { label: "Flood Alerts", section: "alerts" },
+    { label: "Details", section: "details" },
+    { label: "Alerts", section: "alerts" },
     { label: "Announcements", section: "announcements" },
-    { label: "Contacts", section: "contacts" },
   ];
 
   const handleScroll = (section) => {

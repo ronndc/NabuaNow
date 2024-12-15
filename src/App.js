@@ -16,7 +16,6 @@ const FORECAST_API_URL = "https://api.openweathermap.org/data/2.5/forecast";
 const App = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState(null);
-  const [alerts, setAlerts] = useState([]);
   const [location, setLocation] = useState("Nabua, Camarines Sur"); // Default location
 
   // Fetch live weather data from OpenWeather API
@@ -72,23 +71,37 @@ const App = () => {
                 <button>SERVICES</button>
                 <button>UPDATES</button>
               </div>
-              <p style={{ fontSize: "0.8rem", marginTop: "20px", color: "whitesmoke" }}>
-                Photo Courtesy: Baao Tourism, Culture and Arts
-              </p>
-              <footer>
-                <p>&copy; 2024 Municipality of Nabua. All rights reserved.</p>
-              </footer>
             </div>
           </>
         }
       />
 
-
+      {/* Section 3: Traffic and Road Conditions */}
+      <Section
+        id="weather"
+        title="Weather Forecast"
+        style={{ ...styles.section, backgroundColor: "#e8f5e9" }}
+        content={
+          <>
+             <div>
+              <ReactWeather
+                isLoading={isLoading}
+                errorMessage={errorMessage}
+                data={data}
+                lang="en"
+                locationLabel="Nabua, Camarines Sur"
+                unitsLabels={{ temperature: 'C', windSpeed: 'Km/h' }}
+                showForecast
+              />
+            </div>
+          </>
+        }
+      />
 
       {/* Section 2: Real-Time Weather Updates */}
       <Section
-        id="weather"
-        title="Real-Time Weather Updates"
+        id="details"
+        title="Details"
         style={{ ...styles.section, backgroundColor: "#e3f2fd", borderRadius: "8px" }}
         content={
           <>
@@ -139,69 +152,136 @@ const App = () => {
         }
       />
 
-
-
-      {/* Section 3: Traffic and Road Conditions */}
+      {/* Section 4: Alerts */}
       <Section
-        id="traffic"
-        title="Traffic and Road Conditions"
-        style={{ ...styles.section, backgroundColor: "#e8f5e9" }}
-        content={
-          <>
-            <h3>Live Traffic Map</h3>
-            <div>{/* Integrate traffic map here using another API */}</div>
-            <h3>Traffic Advisory</h3>
-            <div>{/* Display traffic advisories here */}</div>
-          </>
-        }
-      />
+      id="alerts"
+      title="Flood Alerts & Emergency Updates"
+      style={{ ...styles.section, backgroundColor: "#fbe9e7" }}
+      content={
+        <>
+          <div className="announcements-section">
+            <div className="bulletin">
+              <input type="checkbox" id="bulletin-toggle" className="bulletin-toggle" />
+              <label htmlFor="bulletin-toggle" className="bulletin-header">
+                <span>INFORMATION BULLETIN 1: Threat of River Flooding in Nabua and Nearby Areas</span>
+                <span className="arrow">►</span>
+              </label>
+              <div className="bulletin-content">
+                <p><strong>Date & Time Issued:</strong> December 15, 2024, at 6:00 AM</p>
+                <p><strong>Current Situation:</strong> While water levels in major rivers have remained stable over the past few days, heavy rain is expected, which could result in flooding in low-lying areas.</p>
+                <p><strong>Potential Impact:</strong> Floodwaters may cover roads, especially in flood-prone zones, potentially disrupting transportation and access.</p>
+                
+                <h5>Residents are advised to:</h5>
+                <ul>
+                  <li><strong>Stay Alert:</strong> Monitor updates from PAGASA and local authorities.</li>
+                  <li><strong>Avoid Flood-Prone Areas:</strong> Refrain from traveling through low-lying roads or areas prone to waterlogging.</li>
+                  <li><strong>Prepare Ahead:</strong> Secure belongings, prepare emergency kits, and ensure safety measures are in place.</li>
+                </ul>
+                <p>
+                  Stay vigilant and prioritize safety during this time. For updates, follow advisories and listen to local government announcements.
+                </p>
+              </div>
+            </div>
+          </div>
+        </>
+      }
+    />
 
-      {/* Section 4: Flood Alerts & Emergency Updates */}
-      <Section
-        id="alerts"
-        title="Flood Alerts & Emergency Updates"
-        style={{ ...styles.section, backgroundColor: "#fbe9e7" }}
-        content={
-          <>
-            <h3>Flood Monitoring</h3>
-            <div>{/* Integrate flood risk zone data here */}</div>
-            <h3>Emergency Alerts</h3>
-            <div>{/* Display emergency alerts here */}</div>
-          </>
-        }
-      />
-
+      
       {/* Section 5: Announcements and Local News */}
       <Section
-        id="announcements"
-        title="Announcements and Local News"
-        style={{ ...styles.section, backgroundColor: "#fbe9e7" }}
-        content={
-          <>
-            <h3>Official Government Announcements</h3>
-            <div>{/* Display announcements here */}</div>
-          </>
-        }
-      />
+      id="announcements"
+      title="Announcements and Local News"
+      style={{ ...styles.section, backgroundColor: "#fbe9e7" }}
+      content={
+        <>
+          <h3 className="section-header">Official Government Announcements</h3>
+          <div className="announcements-section">
+            <div className="bulletin">
+              <input type="checkbox" id="bulletin-1" className="bulletin-toggle" />
+              <label htmlFor="bulletin-1" className="bulletin-header">
+                Bicol Medical Center Hosts Free HIV Testing in Nabua
+                <span className="arrow">&#9654;</span>
+              </label>
+              <div className="bulletin-content">
+                <p>
+                  In its ongoing efforts to combat HIV, the Bicol Medical Center is hosting a Free HIV Testing Program on December 10, 2024. The event will take place at the Covered Court in Sto. Domingo, Nabua, Camarines Sur, from 8:00 AM to 3:00 PM.
+                </p>
+                <p>
+                  This initiative aims to raise awareness about HIV and encourage individuals to take proactive steps toward their health. The free testing is open to everyone, providing a safe and confidential space for participants to learn their status.
+                </p>
+                <p>
+                  Through this campaign, Bicol Medical Center seeks to reduce stigma and promote early detection and treatment. Residents of Nabua and neighboring areas are encouraged to take advantage of this free service to support the fight against HIV.
+                </p>
+                <p>
+                  For more information, visit the event site on December 10 and join this crucial health advocacy.
+                </p>
+              </div>
+            </div>
 
+            <div className="bulletin">
+              <input type="checkbox" id="bulletin-2" className="bulletin-toggle" />
+              <label htmlFor="bulletin-2" className="bulletin-header">
+                SK Launches “Rebuilding Hope” Program to Aid Elementary Students Affected by Typhoons
+                <span className="arrow">&#9654;</span>
+              </label>
+              <div className="bulletin-content">
+                <p>
+                  In the wake of recent typhoons that devastated Nabua, leaving infrastructure and properties heavily damaged, the education of countless students has been severely disrupted. Recognizing this pressing need, the Sangguniang Kabataan (SK) of Barangay San Miguel is launching a relief program titled "Rebuilding Hope: SKool Supplies for Elementary Students after Disaster."
+                </p>
+                <p>
+                  The distribution event will take place on December 8, 2024, at 9:00 AM in the Barangay San Miguel Covered Court. This initiative aims to provide essential school supplies to elementary students affected by the calamities, equipping them with the tools they need to continue their education despite the challenges.
+                </p>
+                <p>
+                  The SK encourages all eligible students to join this meaningful event. Together, let us rebuild hope and foster resilience in our young learners as they move forward from the recent disasters.
+                </p>
+                <p>
+                  For inquiries or more information, contact the SK officials of Barangay San Miguel.
+                </p>
+              </div>
+            </div>
+          </div>
+        </>
+      }
+    />
+
+
+      {/*Footer */}
       <Footer />
     </div>
   );
 };
 const Footer = () => (
   <div className="footer">
-    <p>Contact Information: Emergency services: <span className="emergency-number">123-456-7890</span></p>
-    <p>
-      Follow us on {" "}
-      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-        <i className="fab fa-facebook"></i> Facebook
-      </a> | {" "}
-      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-        <i className="fab fa-twitter"></i> Twitter
-      </a>
-    </p>
-    <p>Credits: OpenWeather, Local Government</p>
+      <div className="flex1">
+        <h2>Contact Us:</h2>
+        <p>You may contact us thru our official primary telecommunication lines:</p>
+        <p>Municipal Hall Building, San Isidro Nabua, Camarines Sur</p>
+        <p>Trunkline: <span className="contact-number">(054) 228-3595</span></p>
+        <p>Mayor's Office: <span className="contact-number">(054) 288-4622</span></p>
+        <p>Email: <span className="contact-email">lgunabua9@gmail.com</span></p>
+      </div>
+
+      <div className="flex2">
+        <h2>Local Hotlines:</h2>
+        <ul>
+          <li>Public Information Unit: <span className="contact-number">89279308</span> (Local: 1100)</li>
+          <li>Information Media Affairs Unit: <span className="contact-number">89256943</span> (Local: 4865)</li>
+          <li>Weather Division: <span className="contact-number">89272877, 89271335, 89264258</span> (Local: 4801 / 4802)</li>
+        </ul>
+      </div>
+
+      <div className="flex3">
+        <h2>About GOVPH</h2>
+        <p>Learn more about the Philippine government, its structure, how government works, and the people behind it.</p>
+        <ul>
+          <li><a href="https://dilg.gov.ph/" target="_blank" rel="noopener noreferrer">Department of Interior and Local Government</a></li>
+          <li><a href="https://www.pagasa.dost.gov.ph/" target="_blank" rel="noopener noreferrer">PAGASA</a></li>
+          <li><a href="https://ndrrmc.gov.ph/" target="_blank" rel="noopener noreferrer">NDRRMC</a></li>
+        </ul>
+      </div>
   </div>
 );
+
 
 export default App;
