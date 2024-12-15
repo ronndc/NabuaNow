@@ -53,31 +53,31 @@ const App = () => {
       {/* Section 1: Hero Banner with Live Alerts */}
       <Section
         id="home"
-        title="Live Alerts"
+        title=""
         style={{
           ...styles.section,
-          backgroundColor: "white", // Red for urgent alertsW
+          backgroundColor: "#81BFDA",
           borderRadius: "8px",
         }}
         content={
           <>
-            <div className="static-banner">
-              {alerts.length > 0
-                ? alerts.map((alert, index) => (
-                    <span key={index} className="alert-item">{alert}</span>
-                  ))
-                : "No current alerts"}
-            </div>
-            <div>
-              <ReactWeather
-                isLoading={isLoading}
-                errorMessage={errorMessage}
-                data={data}
-                lang="en"
-                locationLabel="Nabua, Camarines Sur"
-                unitsLabels={{ temperature: 'C', windSpeed: 'Km/h' }}
-                showForecast
-              />
+            <div className="nabua">
+              <h1>NABUA NOW</h1>
+              <p>Real-time Weather, Traffic, and Announcements Hub</p>
+              <div className="search">
+                <input type="text" placeholder="Search..." />
+                <button>🔍</button>
+              </div>
+              <div className="buttons">
+                <button>SERVICES</button>
+                <button>UPDATES</button>
+              </div>
+              <p style={{ fontSize: "0.8rem", marginTop: "20px", color: "whitesmoke" }}>
+                Photo Courtesy: Baao Tourism, Culture and Arts
+              </p>
+              <footer>
+                <p>&copy; 2024 Municipality of Nabua. All rights reserved.</p>
+              </footer>
             </div>
           </>
         }
@@ -100,7 +100,7 @@ const App = () => {
                 <p><strong>Wind Speed:</strong> {weatherData.wind.speed} m/s</p>
               </div>
             )}
-            <h3>Weather Forecast (5 Days)</h3>
+            <h3>Weather Forecast</h3>
             {forecastData && (
               <div className="forecast-container">
                 {Object.values(forecastData.list.reduce((acc, forecast) => {
