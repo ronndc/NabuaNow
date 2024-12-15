@@ -249,39 +249,39 @@ const App = () => {
       {/*Footer */}
       <Footer />
     </div>
-  );
-};
-const Footer = () => (
-  <div className="footer">
-      <div className="flex1">
-        <h2>Contact Us:</h2>
-        <p>You may contact us thru our official primary telecommunication lines:</p>
-        <p>Municipal Hall Building, San Isidro Nabua, Camarines Sur</p>
-        <p>Trunkline: <span className="contact-number">(054) 228-3595</span></p>
-        <p>Mayor's Office: <span className="contact-number">(054) 288-4622</span></p>
-        <p>Email: <span className="contact-email">lgunabua9@gmail.com</span></p>
-      </div>
+      );
+    };
+    const Footer = () => (
+      <div className="footer">
+          <div className="flex1">
+            <h2>Contact Us:</h2>
+            <p>You may contact us thru our official primary telecommunication lines:</p>
+            <p>Municipal Hall Building, San Isidro Nabua, Camarines Sur</p>
+            <p>Trunkline: <span className="contact-number">(054) 228-3595</span></p>
+            <p>Mayor's Office: <span className="contact-number">(054) 288-4622</span></p>
+            <p>Email: <span className="contact-email">lgunabua9@gmail.com</span></p>
+          </div>
 
-      <div className="flex2">
-        <h2>Local Hotlines:</h2>
-        <ul>
-          <li>Public Information Unit: <span className="contact-number">89279308</span> (Local: 1100)</li>
-          <li>Information Media Affairs Unit: <span className="contact-number">89256943</span> (Local: 4865)</li>
-          <li>Weather Division: <span className="contact-number">89272877, 89271335, 89264258</span> (Local: 4801 / 4802)</li>
-        </ul>
-      </div>
+          <div className="flex2">
+            <h2>Local Hotlines:</h2>
+            <ul>
+              <li>Public Information Unit: <span className="contact-number">89279308</span> (Local: 1100)</li>
+              <li>Information Media Affairs Unit: <span className="contact-number">89256943</span> (Local: 4865)</li>
+              <li>Weather Division: <span className="contact-number">89272877, 89271335, 89264258</span> (Local: 4801 / 4802)</li>
+            </ul>
+          </div>
 
-      <div className="flex3">
-        <h2>About GOVPH</h2>
-        <p>Learn more about the Philippine government, its structure, how government works, and the people behind it.</p>
-        <ul>
-          <li><a href="https://dilg.gov.ph/" target="_blank" rel="noopener noreferrer">Department of Interior and Local Government</a></li>
-          <li><a href="https://www.pagasa.dost.gov.ph/" target="_blank" rel="noopener noreferrer">PAGASA</a></li>
-          <li><a href="https://ndrrmc.gov.ph/" target="_blank" rel="noopener noreferrer">NDRRMC</a></li>
-        </ul>
+          <div className="flex3">
+            <h2>About GOVPH</h2>
+            <p>Learn more about the Philippine government, its structure, how government works, and the people behind it.</p>
+            <ul>
+              <li><a href="https://dilg.gov.ph/" target="_blank" rel="noopener noreferrer">Department of Interior and Local Government</a></li>
+              <li><a href="https://www.pagasa.dost.gov.ph/" target="_blank" rel="noopener noreferrer">PAGASA</a></li>
+              <li><a href="https://ndrrmc.gov.ph/" target="_blank" rel="noopener noreferrer">NDRRMC</a></li>
+            </ul>
+          </div>
       </div>
-  </div>
-);
+    );
 
 
 export default App;
