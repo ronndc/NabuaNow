@@ -31,6 +31,44 @@ const styles = {
     fontWeight: "bold",
     fontFamily: "'Poppins', sans-serif", // Poppins font
   },
+  searchBar: {
+    display: "flex",
+    alignItems: "center",
+    backgroundColor: "#f9f9f9", // Light gray background
+    borderRadius: "8px", // Rounded corners
+    padding: "2px 10px", // Padding for inner spacing
+    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)", // Subtle shadow
+    transition: "box-shadow 0.3s ease",
+  },
+  searchInput: {
+    border: "none", // Remove default border
+    outline: "none", // Remove focus outline
+    fontSize: "16px",
+    fontFamily: "'Poppins', sans-serif", // Match font with navbar
+    padding: "10px", // Inner padding
+    flex: 1, // Allow the input to expand
+    borderRadius: "8px",
+    backgroundColor: "transparent", // Match parent background
+    color: "#333", // Dark text color
+  },
+  searchInputFocus: {
+    boxShadow: "0 0 8px rgba(33, 150, 243, 0.5)", // Blue focus glow
+  },
+  searchButton: {
+    border: "none",
+    outline: "none",
+    backgroundColor: "#2196F3", // Blue button
+    color: "#ffffff", // White text
+    padding: "10px 15px", // Inner padding
+    fontSize: "16px",
+    fontFamily: "'Poppins', sans-serif",
+    cursor: "pointer",
+    borderRadius: "8px",
+    transition: "background-color 0.3s ease", // Smooth hover transition
+  },
+  searchButtonHover: {
+    backgroundColor: "#1976D2", // Darker blue on hover
+  },
   menu: {
     display: "flex",
     justifyContent: "center",
@@ -53,7 +91,6 @@ const styles = {
     color: "#2196F3", // Change text color on hover to blue
     transform: "scale(1.05)", // Slight zoom effect on hover
   },
-  
   section: {
     height: "100vh",
     padding: "50px",

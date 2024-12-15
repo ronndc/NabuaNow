@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import ReactWeather, { useWeatherBit } from 'react-open-weather';
 import axios from "axios";
 import Navbar from "./Components/Navigation";
 import Section from "./Components/Sections";
@@ -11,11 +11,13 @@ const API_KEY = "b7ea8e8e1f339948eaeb41ce38c70c6e";
 const WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather";
 const FORECAST_API_URL = "https://api.openweathermap.org/data/2.5/forecast";
 
+
+
 const App = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState(null);
   const [alerts, setAlerts] = useState([]);
-  const [location, setLocation] = useState("Nabua"); // Default location
+  const [location, setLocation] = useState("Nabua, Camarines Sur"); // Default location
 
   // Fetch live weather data from OpenWeather API
   useEffect(() => {
@@ -37,6 +39,14 @@ const App = () => {
       section.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const { data, isLoading, errorMessage } = useWeatherBit({
+    key: 'a7df7a1e4551459aacedf7b054f2e873',
+    lat: '13.3961',
+    lon: '123.3374',
+    lang: 'en',
+    unit: 'M', // values are (M,S,I)
+  });
+
   return (
     <div>
       <Navbar scrollToSection={scrollToSection} setLocation={setLocation} />
@@ -58,30 +68,16 @@ const App = () => {
                   ))
                 : "No current alerts"}
             </div>
-            <div className="key-stats-dashboard">
-              {weatherData && (
-                <>
-                  <div className="stat-card">
-                    <div className="stat-icon">🌡️</div>
-                    <div className="stat-value">
-                      <strong>Temperature:</strong> {weatherData.main.temp}°C
-                    </div>
-                  </div>
-                  <div className="stat-card">
-                    <div className="stat-icon">🌧️</div>
-                    <div className="stat-value">
-                      <strong>Rain:</strong> {weatherData.weather[0].main}
-                    </div>
-                  </div>
-                  {/* Add traffic conditions here as necessary */}
-                  <div className="stat-card">
-                    <div className="stat-icon">🚗</div>
-                    <div className="stat-value">
-                      <strong>Traffic:</strong> Clear
-                    </div>
-                  </div>
-                </>
-              )}
+            <div>
+              <ReactWeather
+                isLoading={isLoading}
+                errorMessage={errorMessage}
+                data={data}
+                lang="en"
+                locationLabel="Nabua, Camarines Sur"
+                unitsLabels={{ temperature: 'C', windSpeed: 'Km/h' }}
+                showForecast
+              />
             </div>
           </>
         }
@@ -192,14 +188,17 @@ const App = () => {
     </div>
   );
 };
-
 const Footer = () => (
   <div className="footer">
-    <p>Contact Information: Emergency services: 123-456-7890</p>
+    <p>Contact Information: Emergency services: <span className="emergency-number">123-456-7890</span></p>
     <p>
-      Follow us on{" "}
-      <a href="https://facebook.com">Facebook</a> |{" "}
-      <a href="https://twitter.com">Twitter</a>
+      Follow us on {" "}
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+        <i className="fab fa-facebook"></i> Facebook
+      </a> | {" "}
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+        <i className="fab fa-twitter"></i> Twitter
+      </a>
     </p>
     <p>Credits: OpenWeather, Local Government</p>
   </div>
